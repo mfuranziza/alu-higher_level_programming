@@ -15,8 +15,12 @@ if __name__ == '__main__':
 
     # Checking if the status code of the response is 200 (OK)
     if res.status_code == 200:
-        # If the status code is 200, indicating success, print 'OK' as the content
-        print("\t- content: OK")
+        # If the status code is 200, check if the content is exactly "OK"
+        if res.text.strip() == "OK":
+            print("\t- content: OK")
+        else:
+            # If the content is not "OK", print the actual content received in the response
+            print("\t- content: {}".format(res.text))
     else:
         # If the status code is not 200, print the actual content received in the response
         print("\t- content: {}".format(res.text))
